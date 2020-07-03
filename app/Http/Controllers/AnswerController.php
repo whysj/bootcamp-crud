@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\AnswerModel;
 
 class AnswerController extends Controller
 {
@@ -17,9 +18,13 @@ class AnswerController extends Controller
           $data = $request->all();
           unset($data["_token"]);
           // dd($data);
-          $answer = AskModel::save($data);
+          $answer = AnswerModel::save($data);
           if($answer){
-              return view('ask.index');
+              return view('Answer.index');
+          } else {
+            return view('Answer.form');
           }
       }
+
+    
 }
